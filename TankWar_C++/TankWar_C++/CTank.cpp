@@ -33,8 +33,62 @@ void CTank::InitTank(int type) {
 		PosX = 20;
 		PosY = 20;
 		Type = type;
+		Alliance = 1;
+		Score = 0;
+		Blood = 3;
+		IsDead = false;
 		map.setMapValue(PosX, PosY, type);
 		DrawTank();
+		break;
+	case EnemyTank_1:
+		dir = DOWN;
+		PosX = 2;
+		PosY = 2;
+		Type = type;
+		Alliance = 2;
+		Score = 0;
+		Blood = 3;
+		IsDead = false;
+		map.setMapValue(PosX, PosY, type);
+		DrawTank();
+		break;
+	case EnemyTank_2:
+		dir = DOWN;
+		PosX = 10;
+		PosY = 2;
+		Type = type;
+		Score = 0;
+		Blood = 3;
+		Alliance = 2;
+		IsDead = false;
+		map.setMapValue(PosX, PosY, type);
+		DrawTank();
+		break;
+	case EnemyTank_3:
+		dir = DOWN;
+		PosX = 20;
+		PosY = 2;
+		Type = type;
+		Score = 0;
+		Blood = 3;
+		Alliance = 2;
+		IsDead = false;
+		
+		map.setMapValue(PosX, PosY, type);
+		DrawTank();
+		break;
+	case EnemyTank_4:
+		dir = DOWN;
+		PosX = 30;
+		PosY = 2;
+		Type = type;
+		Score = 0;
+		Blood = 3;
+		Alliance = 2;
+		IsDead = false;
+		map.setMapValue(PosX, PosY, type);
+		DrawTank();
+		break;
 	default:
 		break;
 	}
@@ -43,7 +97,14 @@ void CTank::InitTank(int type) {
 
 void CTank::Move(int ForwardDir) {
 	int tmpx = 0, tmpy = 0;
-
+	if (IsEdge(ForwardDir) != 0) {
+		if (this->dir != ForwardDir) {
+			this->dir = ForwardDir;
+			ClsObject();
+			DrawTank();
+		}
+		return;
+	}
 	switch (ForwardDir)
 	{
 	case UP:
@@ -113,7 +174,6 @@ void CTank::DrawTank() {
 }
 
 void CTank::ClsObject() {
-	int TmpType;
 	for (int tmpPosY = PosY - 1; tmpPosY < PosY + 2; tmpPosY++) {
 		for (int tmpPosX = PosX - 1; tmpPosX < PosX + 2; tmpPosX++) {
 			map.setMapValue(tmpPosX, tmpPosY, PreType);
@@ -121,6 +181,69 @@ void CTank::ClsObject() {
 		}
 	}
 }
+
+int CTank::IsEdge(int ForwardDir) {
+	int tmpx = 0, tmpy = 0;
+	CTank TmpTank;
+	int isedge = 0;
+	TmpTank.PosX = this->PosX;
+	TmpTank.PosY = this->PosY; 
+	switch (ForwardDir)
+	{
+	case UP:
+		tmpx = 0;
+		tmpy = -1;
+		TmpTank.PosX += tmpx * 2;
+		TmpTank.PosY += tmpy * 2;
+		if (map.getMapValue(TmpTank.PosX, TmpTank.PosY) != Ground ||
+			map.getMapValue(TmpTank.PosX - 1, TmpTank.PosY) != Ground ||
+			map.getMapValue(TmpTank.PosX + 1, TmpTank.PosY) != Ground) {
+			return 1;
+		}
+		else return 0;
+		
+	case DOWN:
+		tmpx = 0;
+		tmpy = 1;
+		TmpTank.PosX += tmpx * 2;
+		TmpTank.PosY += tmpy * 2;
+		if (map.getMapValue(TmpTank.PosX, TmpTank.PosY) != Ground ||
+			map.getMapValue(TmpTank.PosX - 1, TmpTank.PosY) != Ground ||
+			map.getMapValue(TmpTank.PosX + 1, TmpTank.PosY) != Ground) {
+			return 1;
+		}
+		else return 0;
+	case LEFT:
+		tmpx = -1;
+		tmpy = 0;
+		TmpTank.PosX += tmpx * 2;
+		TmpTank.PosY += tmpy * 2;
+		if (map.getMapValue(TmpTank.PosX, TmpTank.PosY) != Ground ||
+			map.getMapValue(TmpTank.PosX , TmpTank.PosY - 1) != Ground ||
+			map.getMapValue(TmpTank.PosX , TmpTank.PosY + 1) != Ground) {
+			return 1;
+		}
+		else return 0;
+	case RIGHT:
+		tmpx = 1;
+		tmpy = 0;
+		TmpTank.PosX += tmpx * 2;
+		TmpTank.PosY += tmpy * 2;
+		if (map.getMapValue(TmpTank.PosX, TmpTank.PosY) != Ground ||
+			map.getMapValue(TmpTank.PosX, TmpTank.PosY - 1) != Ground ||
+			map.getMapValue(TmpTank.PosX, TmpTank.PosY + 1) != Ground) {
+			return 1;
+		}
+		else return 0;
+	default:
+		break;
+	}
+}
+
+void CTank::setIsFire(bool flat) {
+	IsFire = flat;
+}
+
 int CTank::getPosX() {
 	return PosX;
 }
@@ -143,4 +266,10 @@ int CTank::getType() {
 int CTank::getAlliance() {
 	return Alliance;
 
+}
+int CTank::getDir() {
+	return this->dir;
+}
+bool CTank::getIsFire() {
+	return IsFire;
 }

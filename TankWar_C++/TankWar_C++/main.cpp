@@ -1,23 +1,22 @@
-#include <iostream>
 #include "CMap.h"
 #include "CTank.h"
 #include "Value.h"
+#include "CGame.h"
 #include <iostream>
 #include <windows.h>
+#include <time.h>
 using namespace std;
 
 int main(){
-
+	srand((unsigned)time(NULL));
 	CMap map;
 	map.InitMap();
-	CTank tank;
-	tank.InitTank(MyTank_1);
+	CGame game;
+	game.InitTankInfo();
 	while (true)
 	{
-		if (GetKeyState('W') < 0)tank.Move(UP);
-		if (GetKeyState('S') < 0)tank.Move(DOWN);
-		if (GetKeyState('A') < 0)tank.Move(LEFT);
-		if (GetKeyState('D') < 0)tank.Move(RIGHT);
+		game.MoveSelfAndAlly();
+		game.MoveNPC();
 		Sleep(100);
 	}
 	return 0;
