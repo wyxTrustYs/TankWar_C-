@@ -24,6 +24,9 @@
     <ClCompile Include="CMap.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTank.h">
@@ -33,6 +36,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CGame.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@ class CTank
 {
 public:
 
-	void Move();
+	void Move(int ForwardDir);
 	void InitTank(int type);
 	void DrawTank();
 	void ClsObject();

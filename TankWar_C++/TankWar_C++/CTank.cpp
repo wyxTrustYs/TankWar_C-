@@ -41,33 +41,59 @@ void CTank::InitTank(int type) {
 }
 
 
-void CTank::Move() {
+void CTank::Move(int ForwardDir) {
 	int tmpx = 0, tmpy = 0;
-	if (GetKeyState('W') < 0)
+
+	switch (ForwardDir)
 	{
-		dir = UP;
+	case UP:
 		tmpx = 0;
 		tmpy = -1;
-	}
-	if (GetKeyState('S') < 0)
-	{
+		dir = UP;
+		break;
+	case DOWN:
 		tmpx = 0;
 		tmpy = 1;
 		dir = DOWN;
-	}
-	if (GetKeyState('A') < 0)
-	{
+		break;
+	case LEFT:
 		tmpx = -1;
 		tmpy = 0;
 		dir = LEFT;
-	}
-
-	if (GetKeyState('D') < 0)
-	{
+		break;
+	case RIGHT:
 		tmpx = 1;
 		tmpy = 0;
 		dir = RIGHT;
+		break;
+	default:
+		break;
 	}
+// 	if (GetKeyState('W') < 0)
+// 	{
+// 		dir = UP;
+// 		tmpx = 0;
+// 		tmpy = -1;
+// 	}
+// 	if (GetKeyState('S') < 0)
+// 	{
+// 		tmpx = 0;
+// 		tmpy = 1;
+// 		dir = DOWN;
+// 	}
+// 	if (GetKeyState('A') < 0)
+// 	{
+// 		tmpx = -1;
+// 		tmpy = 0;
+// 		dir = LEFT;
+// 	}
+// 
+// 	if (GetKeyState('D') < 0)
+// 	{
+// 		tmpx = 1;
+// 		tmpy = 0;
+// 		dir = RIGHT;
+// 	}
 	
 	ClsObject();
 	PosX += tmpx;
@@ -94,4 +120,27 @@ void CTank::ClsObject() {
 			map.PrintChar(tmpPosX, tmpPosY, " ");
 		}
 	}
+}
+int CTank::getPosX() {
+	return PosX;
+}
+int CTank::getPosY() {
+	return PosY;
+
+}
+int CTank::getScore() {
+	return Score;
+
+}
+int CTank::getBlood() {
+	return Blood;
+
+}
+int CTank::getType() {
+	return Type;
+
+}
+int CTank::getAlliance() {
+	return Alliance;
+
 }

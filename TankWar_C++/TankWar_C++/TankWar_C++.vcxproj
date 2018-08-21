@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CMap.cpp" />
     <ClCompile Include="CTank.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CGame.h" />
     <ClInclude Include="CMap.h" />
     <ClInclude Include="CTank.h" />
     <ClInclude Include="Value.h" />
