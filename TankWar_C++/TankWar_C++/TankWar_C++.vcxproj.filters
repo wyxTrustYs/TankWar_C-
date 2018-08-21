@@ -15,43 +15,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CBase.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CBullet.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CTankObject.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CMapObject.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CGameObject.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CDrawObject.h">
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CTank.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CMap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CTank.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Value.h">
       <Filter>头文件</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CGameObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CTankObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CMapObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CDrawObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
+    <ClInclude Include="CMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

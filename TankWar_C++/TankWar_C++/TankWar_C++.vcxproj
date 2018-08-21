@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CMap.cpp" />
+    <ClCompile Include="CTank.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CMap.h" />
+    <ClInclude Include="CTank.h" />
+    <ClInclude Include="Value.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{22371223-BAF2-4DFF-9FF2-7F9E5FA3CFEB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -141,22 +151,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="CBase.h" />
-    <ClInclude Include="CBullet.h" />
-    <ClInclude Include="CDrawObject.h" />
-    <ClInclude Include="CGameObject.h" />
-    <ClInclude Include="CMapObject.h" />
-    <ClInclude Include="CTankObject.h" />
-    <ClInclude Include="Value.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="CDrawObject.cpp" />
-    <ClCompile Include="CGameObject.cpp" />
-    <ClCompile Include="CMapObject.cpp" />
-    <ClCompile Include="CTankObject.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
