@@ -64,7 +64,7 @@ void CMap::MapDIY() {
 	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
 	INPUT_RECORD stcRecode = { 0 };
 	DWORD dwRead;
-
+	-
 	SetConsoleMode(hStdin, ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
 	while (1) {
 		ReadConsoleInput(hStdin, &stcRecode, 1, &dwRead);
@@ -143,7 +143,7 @@ void CMap::LoadMap() {
 	system("cls");
 	FullScreen();
 	for (int m = 0; m < 30; m++) {
-		for (int n = 0; n < 65; n++) {
+		for (int n = 0; n < 60; n++) {
 			if (ArrMap[m][n] == Wall) PrintChar(n, m, "¨€");
 			else if (ArrMap[m][n] == Home) PrintChar(n, m, "*");
 			else if (ArrMap[m][n] == Wall) PrintChar(n, m, "0");
@@ -163,6 +163,11 @@ void CMap::EditMap() {
 		}
 	}
 	MapDIY();
+}
+
+void CMap::ClsMap(int x,int y, int Type) {
+	setMapValue(x, y, Type);
+	PrintChar(x, y, " ");
 }
 
 void CMap::OutputPos(int nX, int nY, int flat) {

@@ -16,6 +16,7 @@ public:
 	void NewMap();
 	void LoadMap();
 	void EditMap();
+	void ClsMap(int x,int y,int PreType);				//擦除地图中的物品
 
 	void setMapValue(int x, int y, int value);
 	int getMapValue(int x, int y);

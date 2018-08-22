@@ -8,7 +8,7 @@ public:
 	void InitTank(int type);
 	void DrawTank();
 	void ClsObject();
-	int IsEdge(int ForwardDir);
+	int Collsion(int ForwardDir);
 	void setIsFire(bool flat);
 
 	int getPosX();

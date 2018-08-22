@@ -97,7 +97,78 @@ void CTank::InitTank(int type) {
 
 void CTank::Move(int ForwardDir) {
 	int tmpx = 0, tmpy = 0;
-	if (IsEdge(ForwardDir) != 0) {
+
+// 	switch (Collsion(dir))
+// 	{
+// 	case Ground:
+// 		break;
+// 	case MyTank_1:
+// 		this->dir = ForwardDir;
+// 		ClsObject(); 
+// 		DrawTank();
+// 		return;
+// 	case MyTank_2:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 
+// 	case EnemyTank_1:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	case EnemyTank_2:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	case EnemyTank_3:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	case EnemyTank_4:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	case Wall:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	case IronWall:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	case Forest:
+// 		break;
+// 	case River:
+// 		break;
+// 	case IceGround:
+// 		break;
+// 	case MyTankBullet:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	case EnemyBullet:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	case Home:
+// 		this->dir = ForwardDir;
+// 		ClsObject();
+// 		DrawTank();
+// 		return;
+// 	default:
+//		break;
+// 	}
+
+	if (Collsion(ForwardDir) != 0) {
 		if (this->dir != ForwardDir) {
 			this->dir = ForwardDir;
 			ClsObject();
@@ -182,7 +253,7 @@ void CTank::ClsObject() {
 	}
 }
 
-int CTank::IsEdge(int ForwardDir) {
+int CTank::Collsion(int ForwardDir) {
 	int tmpx = 0, tmpy = 0;
 	CTank TmpTank;
 	int isedge = 0;
