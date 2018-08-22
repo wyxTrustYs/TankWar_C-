@@ -9,9 +9,8 @@ using namespace std;
 
 int main(){
 	srand((unsigned)time(NULL));
-	CMap map;
-	map.InitMap();
 	CGame game;
+	game.Welcome();
 	game.InitTankInfo();
 	while (true)
 	{

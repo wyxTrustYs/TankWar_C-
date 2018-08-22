@@ -29,6 +29,7 @@ private:
 	int Type;
 	int Alliance;
 	int PreType;
+	int Speed;
 	bool IsFire = false;
 	static int TankShape[4][3][3];
 	CMap map;

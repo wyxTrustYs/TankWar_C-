@@ -2,32 +2,11 @@
 #include "Value.h"
 
 void CBullet::InitBullet(CTank tank) {
-
-	this->dir = tank.getDir();
 	this->Alliance = tank.getAlliance();
-	IsDead = false;
-	switch (dir)
-	{
-	case UP:
-		this->PosX = tank.getPosX();
-		this->PosY = tank.getPosY() - 2;
-		break;
-	case DOWN:
-		this->PosX = tank.getPosX();
-		this->PosY = tank.getPosY() + 2;
-		break;
-	case LEFT:
-		this->PosX = tank.getPosX() - 2;
-		this->PosY = tank.getPosY();
-		break;
-	case RIGHT:
-		this->PosX = tank.getPosX() + 2;
-		this->PosY = tank.getPosY();
-		break;
-	default:
-		break;
-	}
-	map.setMapValue(PosX, PosY, Type);
+	this->Speed = 50;
+	this->Type = tank.getType();
+	this->PreType = Ground;
+	Exist = false;
 }
 void CBullet::DrawBullet() {
 	PreType = map.getMapValue(PosX, PosY);
@@ -37,12 +16,16 @@ void CBullet::DrawBullet() {
 
 void CBullet::ClsBullet() {
 	map.setMapValue(PosX, PosY, PreType);
-	map.PrintChar(PosY, PosY, "  ");
+	map.PrintChar(PosX, PosY, " ");
 }
 
 void CBullet::Move() {
 	int tmpx = 0, tmpy = 0;
-	if (IsEdge(dir) != 0) return;
+	if (Collsion(dir) != 0) {
+		Exist = false;
+		ClsBullet();
+		return;
+	}
 	switch (dir)
 	{
 	case UP:
@@ -74,9 +57,12 @@ void CBullet::Move() {
 	DrawBullet();
 }
 
-int CBullet::IsEdge(int ForwardDir) {
+int CBullet::Collsion(int ForwardDir) {
 	int tmpx = 0, tmpy = 0;
-
+	CBullet tmpBullet;
+	tmpBullet.PosX = this->PosX;
+	tmpBullet.PosY = this->PosY;
+	tmpBullet.dir = this->dir;
 	switch (ForwardDir)
 	{
 	case UP:
@@ -99,15 +85,43 @@ int CBullet::IsEdge(int ForwardDir) {
 		break;
 	}
 
-	PosX += tmpx;
-	PosY += tmpy;
-	if (map.getMapValue(PosX, PosY) != Ground) {
-		return 1;
-	}
-	else return 0;
+	tmpBullet.PosX += tmpx;
+	tmpBullet.PosY += tmpy;
+	return map.getMapValue(tmpBullet.PosX, tmpBullet.PosY);
 
 }
-
+void CBullet::Fire(CTank tank) {
+	this->dir = tank.getDir();
+	Exist = true;
+	
+	switch (dir)
+	{
+	case UP:
+		this->PosX = tank.getPosX();
+		this->PosY = tank.getPosY() - 2;
+		break;
+	case DOWN:
+		this->PosX = tank.getPosX();
+		this->PosY = tank.getPosY() + 2;
+		break;
+	case LEFT:
+		this->PosX = tank.getPosX() - 2;
+		this->PosY = tank.getPosY();
+		break;
+	case RIGHT:
+		this->PosX = tank.getPosX() + 2;
+		this->PosY = tank.getPosY();
+		break;
+	default:
+		break;
+	}
+	if (map.getMapValue(PosX,PosY) != Ground) {
+		Exist = false;
+		return;
+	}
+	map.setMapValue(PosX, PosY, Type);
+	
+}
 
 
 int CBullet::getPosX() {
@@ -119,7 +133,7 @@ int CBullet::getPosY() {
 }
 
 bool CBullet::IsExist() {
-	return IsDead;
+	return Exist;
 }
 
 int CBullet::getType() {

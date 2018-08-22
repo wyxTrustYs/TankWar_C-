@@ -12,7 +12,7 @@ public:
 	void StartGame();
 	void MoveSelfAndAlly();
 	void MoveNPC();
-	void Fire(CTank tank);
+	
 private:
 	CMap MapObj;
 	vector<CTank> vecTankObj;

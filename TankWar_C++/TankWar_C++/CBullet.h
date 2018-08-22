@@ -9,7 +9,8 @@ public:
 	void InitBullet(CTank tank);	//子弹初始化
 	void DrawBullet();				//画子弹
 	void ClsBullet();				//擦除子弹
-	int IsEdge(int ForwardDir);		//判断边界
+	int Collsion(int ForwardDir);		//判断边界
+	void Fire(CTank tank);					//开炮
 
 	//获取子弹的各种属性
 	bool IsExist();
@@ -18,15 +19,16 @@ public:
 	int getType();					
 	int getAlliance();				
 	int getPreType();
-
+	
 private:
-	bool IsDead;
+	bool Exist;
 	int PosX;
 	int PosY;
 	int dir;
 	int Type;
 	int Alliance;
 	int PreType;
+	int Speed;
 	CMap map;
 };
 
