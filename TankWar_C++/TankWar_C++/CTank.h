@@ -2,6 +2,8 @@
 #include "CMap.h"
 class CTank
 {
+
+	friend class CGame;
 public:
 
 	void Move(int ForwardDir);

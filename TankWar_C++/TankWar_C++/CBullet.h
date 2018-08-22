@@ -3,7 +3,7 @@
 #include "CTank.h"
 class CBullet
 {
-
+	friend class CGame;
 public:
 	void Move();		//子弹移动函数
 	void InitBullet(CTank tank);	//子弹初始化

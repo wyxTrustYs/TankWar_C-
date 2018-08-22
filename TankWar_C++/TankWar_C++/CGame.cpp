@@ -105,35 +105,149 @@ void CGame::StartGame() {
 
 }
 void CGame::MoveSelfAndAlly() {
-	if (GetKeyState('W') < 0)vecTankObj[0].Move(UP);
-	else if (GetKeyState('S') < 0)vecTankObj[0].Move(DOWN);
-	else if (GetKeyState('A') < 0)vecTankObj[0].Move(LEFT);
-	else if (GetKeyState('D') < 0)vecTankObj[0].Move(RIGHT);
-	
-	if ((GetKeyState(VK_SPACE) < 0)&&vecBullet[0].IsExist() == false) {
-		vecTankObj[0].setIsFire(true);
-		vecBullet[0].Fire(vecTankObj[0]);
+	if (vecTankObj[0].IsDead != true) {
+		if (GetKeyState('W') < 0)vecTankObj[0].Move(UP);
+		else if (GetKeyState('S') < 0)vecTankObj[0].Move(DOWN);
+		else if (GetKeyState('A') < 0)vecTankObj[0].Move(LEFT);
+		else if (GetKeyState('D') < 0)vecTankObj[0].Move(RIGHT);
+
+		if ((GetKeyState(VK_SPACE) < 0) && vecBullet[0].IsExist() == false) {
+			vecTankObj[0].setIsFire(true);
+			vecBullet[0].Fire(vecTankObj[0]);
+		}
+
 	}
 	if (vecTankObj[0].getIsFire() && vecBullet[0].IsExist()) {
+		if (BulletCollsion(vecBullet[0]) != Ground) return;
 		vecBullet[0].Move();
 	}
 }
 void CGame::MoveNPC() {
 	int NpcDir = 1;
 	for (int i = 1; i < 5; i++) {
-		NpcDir = rand() % 4;
-		if (NpcDir == 0)vecTankObj[i].Move(UP);
-		else if (NpcDir == 1)vecTankObj[i].Move(DOWN);
-		else if (NpcDir == 2)vecTankObj[i].Move(LEFT);
-		else if (NpcDir == 3)vecTankObj[i].Move(RIGHT);
+		if (vecTankObj[i].IsDead == false) {
+			NpcDir = rand() % 4;
+			if (NpcDir == 0)vecTankObj[i].Move(UP);
+			else if (NpcDir == 1)vecTankObj[i].Move(DOWN);
+			else if (NpcDir == 2)vecTankObj[i].Move(LEFT);
+			else if (NpcDir == 3)vecTankObj[i].Move(RIGHT);
 
-		if (vecBullet[i].IsExist() == false) {
-			vecTankObj[i].setIsFire(true);
-			vecBullet[i].Fire(vecTankObj[i]);
+			if (vecBullet[i].IsExist() == false) {
+				vecTankObj[i].setIsFire(true);
+				vecBullet[i].Fire(vecTankObj[i]);
+			}
+
 		}
 		if (vecTankObj[i].getIsFire() && vecBullet[i].IsExist()) {
+			if (BulletCollsion(vecBullet[i]) != Ground)
+				break;
 			vecBullet[i].Move();
 		}
 	}
+}
 
+int CGame::BulletCollsion(CBullet& bullet) {
+	int tmpx = 0, tmpy = 0;
+	CBullet tmpBullet;
+
+	tmpBullet.PosX = bullet.PosX;
+	tmpBullet.PosY = bullet.PosY;
+	tmpBullet.dir = bullet.dir;
+
+	int MapType = MapObj.getMapValue(tmpBullet.PosX, tmpBullet.PosY);
+
+	switch (tmpBullet.dir)
+	{
+	case UP:
+		tmpx = 0;
+		tmpy = -1;
+		break;
+	case DOWN:
+		tmpx = 0;
+		tmpy = 1;
+		break;
+	case LEFT:
+		tmpx = -1;
+		tmpy = 0;
+		break;
+	case RIGHT:
+		tmpx = 1;
+		tmpy = 0;
+		break;
+	default:
+		break;
+	}
+
+	tmpBullet.PosX += tmpx;
+	tmpBullet.PosY += tmpy;
+	MapType = MapObj.getMapValue(tmpBullet.PosX, tmpBullet.PosY);
+	switch (MapType)
+	{
+	case MyTank_1:
+		bullet.Exist = false;
+		bullet.ClsBullet();
+		if (bullet.Type == EnemyBullet) {
+			vecTankObj[0].IsDead = true;
+			vecTankObj[0].ClsObject();
+		}
+		break;
+	case MyTank_2:
+	case EnemyTank_1:
+		bullet.Exist = false;
+		bullet.ClsBullet();
+		if (bullet.Type == MyTankBullet) {
+			vecTankObj[1].IsDead = true;
+			vecTankObj[1].ClsObject();
+		}
+		break;
+	case EnemyTank_2:
+		bullet.Exist = false;
+		bullet.ClsBullet();
+		if (bullet.Type == MyTankBullet) {
+			vecTankObj[2].IsDead = true;
+			vecTankObj[2].ClsObject();
+		}
+		break;
+	case EnemyTank_3:
+		bullet.Exist = false;
+		bullet.ClsBullet();
+		if (bullet.Type == MyTankBullet) {
+			vecTankObj[3].IsDead = true;
+			vecTankObj[3].ClsObject();
+		}
+		break;
+	case EnemyTank_4:
+		bullet.Exist = false;
+		bullet.ClsBullet();
+		if (bullet.Type == MyTankBullet) {
+			vecTankObj[4].IsDead = true;
+			vecTankObj[4].ClsObject();
+		}
+		break;
+	case MyTankBullet:
+	case EnemyBullet:
+	case IronWall:
+		bullet.Exist = false;
+		bullet.ClsBullet();
+		break;
+	case Wall:
+		bullet.Exist = false;
+		MapObj.ClsMap(tmpBullet.PosX, tmpBullet.PosY, Ground);
+		bullet.ClsBullet();
+		break;
+	case Ground:
+	case Forest:
+	case River:
+	case IceGround: break;
+	case Home:
+		bullet.Exist = false;
+		bullet.ClsBullet();
+		MapObj.PrintChar(17, 15, "          Game Over           ");
+		Sleep(2000);
+		exit(0);
+		break;
+	default:
+		break;
+	}
+	return MapType;
 }

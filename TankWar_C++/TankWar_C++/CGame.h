@@ -12,7 +12,7 @@ public:
 	void StartGame();
 	void MoveSelfAndAlly();
 	void MoveNPC();
-	
+	int BulletCollsion(CBullet& bullet);
 private:
 	CMap MapObj;
 	vector<CTank> vecTankObj;

@@ -11,7 +11,7 @@ void CMap::InitMap() {
 	for (int m = 0; m < 30; m++) {
 		for (int n = 0; n < 60; n++) {
 			if (m == 0 || n == 0 || m == 29 || n == 59) {
-				ArrMap[m][n] = Wall;
+				ArrMap[m][n] = IronWall;
 				PrintChar(n, m, "¨€");
 			}
 			else ArrMap[m][n] = Ground;
@@ -64,7 +64,7 @@ void CMap::MapDIY() {
 	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
 	INPUT_RECORD stcRecode = { 0 };
 	DWORD dwRead;
-	-
+	
 	SetConsoleMode(hStdin, ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
 	while (1) {
 		ReadConsoleInput(hStdin, &stcRecode, 1, &dwRead);
@@ -144,9 +144,9 @@ void CMap::LoadMap() {
 	FullScreen();
 	for (int m = 0; m < 30; m++) {
 		for (int n = 0; n < 60; n++) {
-			if (ArrMap[m][n] == Wall) PrintChar(n, m, "¨€");
+			if (ArrMap[m][n] == IronWall) PrintChar(n, m, "¨€");
 			else if (ArrMap[m][n] == Home) PrintChar(n, m, "*");
-			else if (ArrMap[m][n] == Wall) PrintChar(n, m, "0");
+			else if (ArrMap[m][n] == Wall) PrintChar(n, m, "…e");
 		}
 	}
 
@@ -157,8 +157,8 @@ void CMap::EditMap() {
 	FullScreen();
 	for (int m = 0; m < 30; m++) {
 		for (int n = 0; n < 65; n++) {
-			if (ArrMap[m][n] == Wall) PrintChar(n, m, "¨€");
-			else if (ArrMap[m][n] == IceGround) PrintChar(n, m, "0");
+			if (ArrMap[m][n] == IronWall) PrintChar(n, m, "¨€");
+			else if (ArrMap[m][n] == Wall) PrintChar(n, m, "…e");
 			else if (ArrMap[m][n] == Home) PrintChar(n, m, "#");
 		}
 	}
