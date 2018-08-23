@@ -143,9 +143,10 @@ void CGame::MoveSelfAndAlly() {
 
 	}
 	if (vecTankObj[0].getIsFire() && vecBullet[0].IsExist()) {
-		if (BulletCollsion(vecBullet[0]) >= MyTank_1)
+		int CollsionType = BulletCollsion(vecBullet[0]);
+		if (CollsionType >= MyTank_1)
 		{
-			if (BulletCollsion(vecBullet[0]) != River)
+			if (CollsionType != River)
 				return;
 		}
 		vecBullet[0].Move();
@@ -179,12 +180,13 @@ void CGame::MoveNPC() {
 			vecTankObj[i].InitTank(vecTankObj[i].getType());
 		}
 		if (vecTankObj[i].getIsFire() && vecBullet[i].IsExist()) {
-			if (BulletCollsion(vecBullet[i]) >= MyTank_1)
+			int CollsionType = BulletCollsion(vecBullet[0]);
+			if (CollsionType >= MyTank_1)
 			{
-				if (BulletCollsion(vecBullet[i]) != River)
-					break;
+				if (CollsionType != River)
+					return;
 			}
-			vecBullet[i].Move();
+			vecBullet[0].Move();
 		}
 	}
 }
@@ -231,8 +233,11 @@ int CGame::BulletCollsion(CBullet& bullet) {
 		bullet.ClsBullet();
 		bullet.PreType = Ground;
 		if (bullet.Type == EnemyBullet) {
-			vecTankObj[0].IsDead = true;
-			vecTankObj[0].ClsObject();
+			vecTankObj[0].Blood--;
+			if (vecTankObj[0].Blood == 0) {
+				vecTankObj[0].IsDead = true;
+				vecTankObj[0].ClsObject();
+			}
 		}
 		break;
 	case MyTank_2:
@@ -242,7 +247,8 @@ int CGame::BulletCollsion(CBullet& bullet) {
 		bullet.Exist = false;
 		bullet.ClsBullet();
 		bullet.PreType = Ground;
-		if (bullet.Type == MyTankBullet) {
+		vecTankObj[1].Blood--;
+		if (vecTankObj[1].Blood == 0) {
 			vecTankObj[1].IsDead = true;
 			vecTankObj[1].ClsObject();
 		}
@@ -252,7 +258,8 @@ int CGame::BulletCollsion(CBullet& bullet) {
 		bullet.Exist = false;
 		bullet.ClsBullet();
 		bullet.PreType = Ground;
-		if (bullet.Type == MyTankBullet) {
+		vecTankObj[2].Blood--;
+		if (vecTankObj[2].Blood == 0) {
 			vecTankObj[2].IsDead = true;
 			vecTankObj[2].ClsObject();
 		}
@@ -262,7 +269,8 @@ int CGame::BulletCollsion(CBullet& bullet) {
 		bullet.Exist = false;
 		bullet.ClsBullet();
 		bullet.PreType = Ground;
-		if (bullet.Type == MyTankBullet) {
+		vecTankObj[3].Blood--;
+		if (vecTankObj[3].Blood == 0) {
 			vecTankObj[3].IsDead = true;
 			vecTankObj[3].ClsObject();
 		}
@@ -272,7 +280,8 @@ int CGame::BulletCollsion(CBullet& bullet) {
 		bullet.Exist = false;
 		bullet.ClsBullet();
 		bullet.PreType = Ground;
-		if (bullet.Type == MyTankBullet) {
+		vecTankObj[4].Blood--;
+		if (vecTankObj[4].Blood == 0) {
 			vecTankObj[4].IsDead = true;
 			vecTankObj[4].ClsObject();
 		}

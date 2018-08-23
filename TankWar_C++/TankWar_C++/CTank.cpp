@@ -35,9 +35,9 @@ void CTank::InitTank(int type) {
 		Type = type;
 		Alliance = 1;
 		Score = 0;
-		Blood = 3;
+		Blood = 1;
 		IsDead = false;
-		TankColor = 7;
+//		TankColor = 7;
 //		map.setMapValue(PosX, PosY, type);
 		DrawTank();
 		break;
@@ -48,9 +48,9 @@ void CTank::InitTank(int type) {
 		Type = type;
 		Alliance = 2;
 		Score = 0;
-		Blood = 3;
+		Blood = 1;
 		IsDead = false;
-		TankColor = 1;
+//		TankColor = 7;
 //		map.setMapValue(PosX, PosY, type);
 		DrawTank();
 		break;
@@ -60,10 +60,10 @@ void CTank::InitTank(int type) {
 		PosY = 2;
 		Type = type;
 		Score = 0;
-		Blood = 3;
+		Blood = 2;
 		Alliance = 2;
 		IsDead = false;
-		TankColor = 2;
+//		TankColor = 2;
 //		map.setMapValue(PosX, PosY, type);
 		DrawTank();
 		break;
@@ -76,7 +76,7 @@ void CTank::InitTank(int type) {
 		Blood = 3;
 		Alliance = 2;
 		IsDead = false;		
-		TankColor = 4;
+//		TankColor = 4;
 //		map.setMapValue(PosX, PosY, type);
 		DrawTank();
 		break;
@@ -86,10 +86,10 @@ void CTank::InitTank(int type) {
 		PosY = 2;
 		Type = type;
 		Score = 0;
-		Blood = 3;
+		Blood = 4;
 		Alliance = 2;
 		IsDead = false;
-		TankColor = 6;
+//		TankColor = 6;
 //		map.setMapValue(PosX, PosY, type);
 		DrawTank();
 		break;
@@ -144,6 +144,23 @@ void CTank::Move(int ForwardDir) {
 	DrawTank();
 }
 void CTank::DrawTank() {
+	switch (Blood)
+	{
+	case 1:
+		TankColor = 7;
+		break;
+	case 2:
+		TankColor = 2;
+		break;
+	case 3:
+		TankColor = 4;
+		break;
+	case 4:
+		TankColor = 6;
+		break;
+	default:
+		break;
+	}
 	for (int tmpPosY = PosY - 1,Y = 0; tmpPosY < PosY + 2; tmpPosY++,Y++) {
 		for (int tmpPosX = PosX - 1,X = 0; tmpPosX < PosX + 2; tmpPosX++,X++) {
 			if (map.getMapValue(tmpPosX, tmpPosY) < MyTank_1) {
