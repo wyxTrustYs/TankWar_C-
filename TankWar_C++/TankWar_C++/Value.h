@@ -2,8 +2,9 @@
 enum Dir { UP, DOWN, LEFT, RIGHT };
 enum MapValue
 {
-	Ground, MyTank_1, MyTank_2, EnemyTank_1, EnemyTank_2, EnemyTank_3, EnemyTank_4,
-	Wall, IronWall, Forest, River, IceGround,
+	Ground, Forest, IceGround,
+	MyTank_1, MyTank_2, EnemyTank_1, EnemyTank_2, EnemyTank_3, EnemyTank_4,
+	River,
 	MyTankBullet, EnemyBullet,
-	Home
+	Home,Wall, IronWall, BorderWall
 };

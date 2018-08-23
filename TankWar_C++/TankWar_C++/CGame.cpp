@@ -24,10 +24,15 @@ void CGame::Welcome() {
 			system("cls");
 			MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
 			MapObj.LoadMap();
+			InitTankInfo();
+
+			while (true)
+			{
+				MoveSelfAndAlly();
+				MoveNPC();
+				Sleep(50);
+			}
 			break;
-			/*	InitMap();
-			InitHome();*/
-			//Move();
 		case 2:
 		{
 			system("cls");
@@ -65,12 +70,20 @@ void CGame::Welcome() {
 			system("cls");
 			MapObj.FileToMap(name);
 			MapObj.LoadMap();
+
+			InitTankInfo();
+			while (true)
+			{
+				MoveSelfAndAlly();
+				MoveNPC();
+				Sleep(50);
+			}
 			break;
 		}
 		default:
-			break;
+			return;
 		}
-		return;
+		
 	}
 }
 void CGame::InitTankInfo() {
@@ -105,11 +118,23 @@ void CGame::StartGame() {
 
 }
 void CGame::MoveSelfAndAlly() {
-	if (vecTankObj[0].IsDead != true) {
-		if (GetKeyState('W') < 0)vecTankObj[0].Move(UP);
-		else if (GetKeyState('S') < 0)vecTankObj[0].Move(DOWN);
-		else if (GetKeyState('A') < 0)vecTankObj[0].Move(LEFT);
-		else if (GetKeyState('D') < 0)vecTankObj[0].Move(RIGHT);
+	
+	sprintf(Score, "%d", vecTankObj[0].getScore());
+	MapObj.PrintChar(63, 15, "你的得分为：");
+	MapObj.PrintChar(66, 16, Score);
+	if (vecTankObj[0].IsDead == false) {
+		if (vecTankObj[0].PreType[2][0] == IceGround &&
+			vecTankObj[0].PreType[2][1] == IceGround &&
+			vecTankObj[0].PreType[2][2] == IceGround) {
+			vecTankObj[0].Move(vecTankObj[0].DirInIce);
+		}
+		else
+		{
+			if (GetKeyState('W') < 0)	{	vecTankObj[0].DirInIce = UP; vecTankObj[0].Move(UP); }
+			else if (GetKeyState('S') < 0){ vecTankObj[0].DirInIce = DOWN; vecTankObj[0].Move(DOWN); }
+			else if (GetKeyState('A') < 0){ vecTankObj[0].DirInIce = LEFT; vecTankObj[0].Move(LEFT); }
+			else if (GetKeyState('D') < 0){ vecTankObj[0].DirInIce = RIGHT; vecTankObj[0].Move(RIGHT); }
+		}
 
 		if ((GetKeyState(VK_SPACE) < 0) && vecBullet[0].IsExist() == false) {
 			vecTankObj[0].setIsFire(true);
@@ -118,7 +143,11 @@ void CGame::MoveSelfAndAlly() {
 
 	}
 	if (vecTankObj[0].getIsFire() && vecBullet[0].IsExist()) {
-		if (BulletCollsion(vecBullet[0]) != Ground) return;
+		if (BulletCollsion(vecBullet[0]) >= MyTank_1)
+		{
+			if (BulletCollsion(vecBullet[0]) != River)
+				return;
+		}
 		vecBullet[0].Move();
 	}
 }
@@ -126,21 +155,35 @@ void CGame::MoveNPC() {
 	int NpcDir = 1;
 	for (int i = 1; i < 5; i++) {
 		if (vecTankObj[i].IsDead == false) {
-			NpcDir = rand() % 4;
-			if (NpcDir == 0)vecTankObj[i].Move(UP);
-			else if (NpcDir == 1)vecTankObj[i].Move(DOWN);
-			else if (NpcDir == 2)vecTankObj[i].Move(LEFT);
-			else if (NpcDir == 3)vecTankObj[i].Move(RIGHT);
-
+			if (vecTankObj[i].PreType[2][0] == IceGround &&
+				vecTankObj[i].PreType[2][1] == IceGround &&
+				vecTankObj[i].PreType[2][2] == IceGround) {
+				vecTankObj[i].Move(vecTankObj[i].DirInIce);
+			}
+			else
+			{
+				NpcDir = rand() % 4;
+				vecTankObj[i].DirInIce = NpcDir;
+				if (NpcDir == 0)vecTankObj[i].Move(UP);
+				else if (NpcDir == 1)vecTankObj[i].Move(DOWN);
+				else if (NpcDir == 2)vecTankObj[i].Move(LEFT);
+				else if (NpcDir == 3)vecTankObj[i].Move(RIGHT);
+			}
 			if (vecBullet[i].IsExist() == false) {
-				vecTankObj[i].setIsFire(true);
-				vecBullet[i].Fire(vecTankObj[i]);
+				//vecTankObj[i].setIsFire(true);
+				//vecBullet[i].Fire(vecTankObj[i]);
 			}
 
 		}
+		else if (vecTankObj[i].IsDead == true) {
+			vecTankObj[i].InitTank(vecTankObj[i].getType());
+		}
 		if (vecTankObj[i].getIsFire() && vecBullet[i].IsExist()) {
-			if (BulletCollsion(vecBullet[i]) != Ground)
-				break;
+			if (BulletCollsion(vecBullet[i]) >= MyTank_1)
+			{
+				if (BulletCollsion(vecBullet[i]) != River)
+					break;
+			}
 			vecBullet[i].Move();
 		}
 	}
@@ -186,39 +229,49 @@ int CGame::BulletCollsion(CBullet& bullet) {
 	case MyTank_1:
 		bullet.Exist = false;
 		bullet.ClsBullet();
+		bullet.PreType = Ground;
 		if (bullet.Type == EnemyBullet) {
 			vecTankObj[0].IsDead = true;
 			vecTankObj[0].ClsObject();
 		}
 		break;
 	case MyTank_2:
+
 	case EnemyTank_1:
+		vecTankObj[0].setScore(10);
 		bullet.Exist = false;
 		bullet.ClsBullet();
+		bullet.PreType = Ground;
 		if (bullet.Type == MyTankBullet) {
 			vecTankObj[1].IsDead = true;
 			vecTankObj[1].ClsObject();
 		}
 		break;
 	case EnemyTank_2:
+		vecTankObj[0].setScore(20);
 		bullet.Exist = false;
 		bullet.ClsBullet();
+		bullet.PreType = Ground;
 		if (bullet.Type == MyTankBullet) {
 			vecTankObj[2].IsDead = true;
 			vecTankObj[2].ClsObject();
 		}
 		break;
 	case EnemyTank_3:
+		vecTankObj[0].setScore(30);
 		bullet.Exist = false;
 		bullet.ClsBullet();
+		bullet.PreType = Ground;
 		if (bullet.Type == MyTankBullet) {
 			vecTankObj[3].IsDead = true;
 			vecTankObj[3].ClsObject();
 		}
 		break;
 	case EnemyTank_4:
+		vecTankObj[0].setScore(40);
 		bullet.Exist = false;
 		bullet.ClsBullet();
+		bullet.PreType = Ground;
 		if (bullet.Type == MyTankBullet) {
 			vecTankObj[4].IsDead = true;
 			vecTankObj[4].ClsObject();
@@ -242,6 +295,7 @@ int CGame::BulletCollsion(CBullet& bullet) {
 	case Home:
 		bullet.Exist = false;
 		bullet.ClsBullet();
+		bullet.PreType = Ground;
 		MapObj.PrintChar(17, 15, "          Game Over           ");
 		Sleep(2000);
 		exit(0);

@@ -17,5 +17,6 @@ private:
 	CMap MapObj;
 	vector<CTank> vecTankObj;
 	vector<CBullet> vecBullet;
+	char Score[5];
 };
 

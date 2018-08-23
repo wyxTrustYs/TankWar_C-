@@ -21,9 +21,35 @@ void CBullet::DrawBullet() {
 	map.PrintChar(PosX, PosY, "*");
 }
 
+/*
+PrintChar(n, m, "¨€");
+PrintChar(n, m, "*", 6);
+PrintChar(n, m, "…e", 12);
+PrintChar(n, m, "¡ù", 2);
+PrintChar(n, m, "¡Ö", 1);
+ound)PrintChar(n, m, "¨ˆ", 15);
+*/
+
 void CBullet::ClsBullet() {
 	map.setMapValue(PosX, PosY, PreType);
-	map.PrintChar(PosX, PosY, " ");
+	switch (PreType)
+	{
+	case Ground:
+		map.PrintChar(PosX, PosY, " ");
+		break;
+	case Forest:
+		map.PrintChar(PosX, PosY, "¡ù",2);
+		break;
+	case River:
+		map.PrintChar(PosX, PosY, "¡Ö", 1);
+		break;
+	case IceGround:
+		map.PrintChar(PosX, PosY, "¨ˆ", 15);
+		break;
+	default:
+		break;
+	}
+	
 }
 
 
@@ -99,7 +125,10 @@ void CBullet::Fire(CTank tank) {
  		map.ClsMap(PosX, PosY, Ground);
  		ClsBullet();
  		return ;
- 	}
+	}if (map.getMapValue(PosX, PosY) == River || map.getMapValue(PosX, PosY) == IceGround ||
+		map.getMapValue(PosX, PosY) == Forest) {
+		PreType = map.getMapValue(PosX, PosY);
+	}
 //	map.setMapValue(PosX, PosY, Type);
 }
 

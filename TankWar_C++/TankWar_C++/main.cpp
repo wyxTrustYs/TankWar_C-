@@ -11,12 +11,12 @@ int main(){
 	srand((unsigned)time(NULL));
 	CGame game;
 	game.Welcome();
-	game.InitTankInfo();
-	while (true)
-	{
-		game.MoveSelfAndAlly();
-		game.MoveNPC();
-		Sleep(50);
-	}
+// 	game.InitTankInfo();
+// 	while (true)
+// 	{
+// 		game.MoveSelfAndAlly();
+// 		game.MoveNPC();
+// 		Sleep(50);
+// 	}
 	return 0;
 }

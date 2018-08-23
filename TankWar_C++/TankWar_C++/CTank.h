@@ -12,6 +12,7 @@ public:
 	void ClsObject();
 	int Collsion(int ForwardDir);
 	void setIsFire(bool flat);
+	void setScore(int newScore);
 
 	int getPosX();
 	int getPosY();
@@ -26,13 +27,15 @@ private:
 	int PosX;
 	int PosY;
 	int dir;
-	int Score;
+	int Score = 0;
 	int Blood;
 	int Type;
 	int Alliance;
-	int PreType;
+	int PreType[3][3];
 	int Speed;
 	bool IsFire = false;
+	int DirInIce = 0;
+	int TankColor = 7;
 	static int TankShape[4][3][3];
 	CMap map;
 	

@@ -9,7 +9,7 @@ public:
 	void InitBullet(CTank tank);	//子弹初始化
 	void DrawBullet();				//画子弹
 	void ClsBullet();				//擦除子弹
-	int Collsion(int ForwardDir);		//判断边界
+	//int Collsion(int ForwardDir);		//判断边界
 	void Fire(CTank tank);					//开炮
 
 	//获取子弹的各种属性
