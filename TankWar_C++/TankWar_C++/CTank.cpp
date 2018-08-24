@@ -31,15 +31,30 @@ void CTank::InitTank(int type) {
 	case MyTank_1:
 		dir = UP;
 		PosX = 20;
-		PosY = 20;
+		PosY = 26;
 		Type = type;
 		Alliance = 1;
 		Score = 0;
 		Blood = 1;
+		Speed = 50;
 		IsDead = false;
 //		TankColor = 7;
 //		map.setMapValue(PosX, PosY, type);
-		DrawTank();
+//		DrawTank();
+		break;
+	case MyTank_2:
+		dir = UP;
+		PosX = 30;
+		PosY = 26;
+		Type = type;
+		Alliance = 1;
+		Score = 0;
+		Blood = 1;
+		Speed = 50;
+		IsDead = false;
+		//		TankColor = 7;
+		//		map.setMapValue(PosX, PosY, type);
+//		DrawTank();
 		break;
 	case EnemyTank_1:
 		dir = DOWN;
@@ -49,10 +64,11 @@ void CTank::InitTank(int type) {
 		Alliance = 2;
 		Score = 0;
 		Blood = 1;
+		Speed = 50;
 		IsDead = false;
 //		TankColor = 7;
 //		map.setMapValue(PosX, PosY, type);
-		DrawTank();
+//		DrawTank();
 		break;
 	case EnemyTank_2:
 		dir = DOWN;
@@ -61,11 +77,12 @@ void CTank::InitTank(int type) {
 		Type = type;
 		Score = 0;
 		Blood = 2;
+		Speed = 100;
 		Alliance = 2;
 		IsDead = false;
 //		TankColor = 2;
 //		map.setMapValue(PosX, PosY, type);
-		DrawTank();
+//		DrawTank();
 		break;
 	case EnemyTank_3:
 		dir = DOWN;
@@ -74,11 +91,12 @@ void CTank::InitTank(int type) {
 		Type = type;
 		Score = 0;
 		Blood = 3;
+		Speed = 150;
 		Alliance = 2;
 		IsDead = false;		
 //		TankColor = 4;
 //		map.setMapValue(PosX, PosY, type);
-		DrawTank();
+//		DrawTank();
 		break;
 	case EnemyTank_4:
 		dir = DOWN;
@@ -87,11 +105,12 @@ void CTank::InitTank(int type) {
 		Type = type;
 		Score = 0;
 		Blood = 4;
+		Speed = 200;
 		Alliance = 2;
 		IsDead = false;
 //		TankColor = 6;
 //		map.setMapValue(PosX, PosY, type);
-		DrawTank();
+//		DrawTank();
 		break;
 	default:
 		break;

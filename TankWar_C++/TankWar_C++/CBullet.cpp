@@ -4,12 +4,28 @@
 void CBullet::InitBullet(CTank tank) {
 	this->Alliance = tank.getAlliance();
 	this->Speed = 50;
-	if (tank.getType() == MyTank_1 || tank.getType() == MyTank_2) {
-		this->Type = MyTankBullet;
-	}
-	else
+	switch (tank.getType())
 	{
-		this->Type = EnemyBullet;
+	case MyTank_1:
+		this->Type = MyTank_1Bullet;
+		break;
+	case MyTank_2:
+		this->Type = MyTank_2Bullet;
+		break;
+	case EnemyTank_1:
+		this->Type = EnemyTank_1Bullet;
+		break;
+	case EnemyTank_2:
+		this->Type = EnemyTank_2Bullet;
+		break;
+	case EnemyTank_3:
+		this->Type = EnemyTank_3Bullet;
+		break;
+	case EnemyTank_4:
+		this->Type = EnemyTank_4Bullet;
+		break;
+	default:
+		break;
 	}
 	
 	this->PreType = Ground;
@@ -21,14 +37,6 @@ void CBullet::DrawBullet() {
 	map.PrintChar(PosX, PosY, "*");
 }
 
-/*
-PrintChar(n, m, "¨€");
-PrintChar(n, m, "*", 6);
-PrintChar(n, m, "…e", 12);
-PrintChar(n, m, "¡ù", 2);
-PrintChar(n, m, "¡Ö", 1);
-ound)PrintChar(n, m, "¨ˆ", 15);
-*/
 
 void CBullet::ClsBullet() {
 	map.setMapValue(PosX, PosY, PreType);
