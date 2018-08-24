@@ -1,33 +1,72 @@
 ﻿  CGame.cpp
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(129): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(43): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(53): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(63): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(133): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 参见“scanf”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(134): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(138): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 参见“scanf”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(142): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(146): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 参见“scanf”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(380): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(184): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(194): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(205): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(227): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(237): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(247): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(300): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(538): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(424): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(582): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(514): warning C4101: “tanknum”: 未引用的局部变量
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(729): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(672): warning C4101: “tanknum”: 未引用的局部变量
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(887): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(730): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(888): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(731): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(889): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(732): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(890): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(733): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(891): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(734): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(892): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(735): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(893): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(744): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(902): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(753): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(911): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
-e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(721): warning C4715: “CGame::BulletToTank”: 不是所有的控件路径都返回值
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(932): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(933): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(934): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(935): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(936): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(937): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: 参见“strcat”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(938): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(951): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(962): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(879): warning C4715: “CGame::BulletToTank”: 不是所有的控件路径都返回值
+e:\15pbcode\tankwar_c++\tankwar_c++\tankwar_c++\cgame.cpp(969): warning C4172: 返回局部变量或临时变量的地址: dataname
   TankWar_C++.vcxproj -> E:\15PBCode\TankWar_C++\TankWar_C++\Debug\TankWar_C++.exe
   TankWar_C++.vcxproj -> E:\15PBCode\TankWar_C++\TankWar_C++\Debug\TankWar_C++.pdb (Full PDB)
