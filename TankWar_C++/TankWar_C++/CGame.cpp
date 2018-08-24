@@ -2,12 +2,14 @@
 #include "Value.h"
 #include <windows.h>
 #include <time.h>
+#include <iostream>
+using namespace std;
+
 void CGame::Welcome() {
 	int option;
 	char name[10];
 	int num;
-	int flat;
-	
+	int level = 1;
 	MapObj.FullScreen();
 	//PlaySoundA("Base.wav", NULL, SND_ASYNC | SND_NODEFAULT | SND_LOOP);
 	while (true) {
@@ -19,26 +21,107 @@ void CGame::Welcome() {
 		MapObj.PrintChar(30, 10, "3、编辑地图");
 		MapObj.PrintChar(40, 10, "4、载入地图");
 		MapObj.PrintChar(50, 10, "5、读取存档\n");
-		scanf("%d", &option);
+		cin >> option;
 		switch (option){
 		case 1:
-			system("cls");
-			
-			MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
-			MapObj.LoadMap();
-			InitTankInfo();
-			
-			StartGame(1,1);
-			
+			while (true)
+			{
+				system("cls");
+				switch (level)
+				{
+				case 1:
+					MapObj.PrintChar(30, 10, "第一关");
+					Sleep(2000);
+					system("cls");
+					vecTankObj.clear();
+					vecBullet.clear();
+					MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
+					MapObj.LoadMap();
+					break;
+				case 2:
+					MapObj.PrintChar(30, 10, "第二关");
+					Sleep(2000);
+					system("cls");
+					vecTankObj.clear();
+					vecBullet.clear();
+					MapObj.FileToMap("level2");//开始游戏默认加载地图存放在init.map文件中
+					MapObj.LoadMap();
+					break;
+				case 3:
+					MapObj.PrintChar(30, 10, "第三关");
+					Sleep(2000);
+					system("cls");
+					vecTankObj.clear();
+					vecBullet.clear();
+					MapObj.FileToMap("level3");//开始游戏默认加载地图存放在init.map文件中
+					MapObj.LoadMap();
+					break;
+				default:
+					level = 0;
+					MapObj.PrintChar(30, 10, "第一关");
+					Sleep(2000);
+					system("cls");
+					vecTankObj.clear();
+					vecBullet.clear();
+					MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
+					MapObj.LoadMap();
+					break;
+				}
+				InitTankInfo();
+				StartGame(level, 1);
+				level++;
+			}
 			break;
 		case 2:
-			system("cls");
-			MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
-			MapObj.LoadMap();
-			InitTankInfo();
-			StartGame(1,2);
-			
+			while (true)
+			{
+				system("cls");
+				switch (level)
+				{
+				case 1:
+					MapObj.PrintChar(30, 10, "第一关");
+					Sleep(2000);
+					system("cls");
+					vecTankObj.clear();
+					vecBullet.clear();
+					MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
+					MapObj.LoadMap();
+					break;
+				case 2:
+					MapObj.PrintChar(30, 10, "第二关");
+					Sleep(2000);
+					system("cls");
+					vecTankObj.clear();
+					vecBullet.clear();
+					MapObj.FileToMap("level2");//开始游戏默认加载地图存放在init.map文件中
+					MapObj.LoadMap();
+					break;
+				case 3:
+					MapObj.PrintChar(30, 10, "第三关");
+					Sleep(2000);
+					system("cls");
+					vecTankObj.clear();
+					vecBullet.clear();
+					MapObj.FileToMap("level3");//开始游戏默认加载地图存放在init.map文件中
+					MapObj.LoadMap();
+					break;
+				default:
+					level = 0;
+					MapObj.PrintChar(30, 10, "第一关");
+					Sleep(2000);
+					system("cls");
+					vecTankObj.clear();
+					vecBullet.clear();
+					MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
+					MapObj.LoadMap();
+					break;
+				}
+				InitTankInfo();
+				StartGame(level, 2);
+				level++;
+			}
 			break;
+
 		case 3:{
 			system("cls");
 			MapObj.PrintChar(20, 10, "1、修改地图");
@@ -66,11 +149,119 @@ void CGame::Welcome() {
 			break;
 		}
 		case 4:{
+			int loadoption;
 			system("cls");
 			system("dir .\\map");
-			printf("请选择你要打开的地图\n");
-			scanf("%s", name);
+			cout << "请选择你要打开的地图" << endl;
+			cin >> name;
 			system("cls");
+			MapObj.PrintChar(10, 10, "1、单人游戏");
+			MapObj.PrintChar(20, 10, "2、双人游戏");
+			cin >> loadoption;
+			switch (loadoption)
+			{
+			case 1:
+				while (true)
+				{
+					system("cls");
+					switch (level)
+					{
+					case 1:
+						MapObj.PrintChar(30, 10, "第一关");
+						Sleep(2000);
+						system("cls");
+						vecTankObj.clear();
+						vecBullet.clear();
+						MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
+						MapObj.LoadMap();
+						break;
+					case 2:
+						MapObj.PrintChar(30, 10, "第二关");
+						Sleep(2000);
+						system("cls");
+						vecTankObj.clear();
+						vecBullet.clear();
+						MapObj.FileToMap("level2");//开始游戏默认加载地图存放在init.map文件中
+						MapObj.LoadMap();
+						break;
+					case 3:
+						MapObj.PrintChar(30, 10, "第三关");
+						Sleep(2000);
+						system("cls");
+						vecTankObj.clear();
+						vecBullet.clear();
+						MapObj.FileToMap("level3");//开始游戏默认加载地图存放在init.map文件中
+						MapObj.LoadMap();
+						break;
+					default:
+						level = 0;
+						MapObj.PrintChar(30, 10, "第一关");
+						Sleep(2000);
+						system("cls");
+						vecTankObj.clear();
+						vecBullet.clear();
+						MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
+						MapObj.LoadMap();
+						break;
+					}
+					InitTankInfo();
+					StartGame(level, 1);
+					level++;
+				}
+				break;
+			case 2:
+				while (true)
+				{
+					system("cls");
+					switch (level)
+					{
+					case 1:
+						MapObj.PrintChar(30, 10, "第一关");
+						Sleep(2000);
+						system("cls");
+						vecTankObj.clear();
+						vecBullet.clear();
+						MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
+						MapObj.LoadMap();
+						break;
+					case 2:
+						MapObj.PrintChar(30, 10, "第二关");
+						Sleep(2000);
+						system("cls");
+						vecTankObj.clear();
+						vecBullet.clear();
+						MapObj.FileToMap("level2");//开始游戏默认加载地图存放在init.map文件中
+						MapObj.LoadMap();
+						break;
+					case 3:
+						MapObj.PrintChar(30, 10, "第三关");
+						Sleep(2000);
+						system("cls");
+						vecTankObj.clear();
+						vecBullet.clear();
+						MapObj.FileToMap("level3");//开始游戏默认加载地图存放在init.map文件中
+						MapObj.LoadMap();
+						break;
+					default:
+						level = 0;
+						MapObj.PrintChar(30, 10, "第一关");
+						Sleep(2000);
+						system("cls");
+						vecTankObj.clear();
+						vecBullet.clear();
+						MapObj.FileToMap("init");//开始游戏默认加载地图存放在init.map文件中
+						MapObj.LoadMap();
+						break;
+					}
+					InitTankInfo();
+					StartGame(level, 2);
+					level++;
+				}
+				break;
+
+			default:
+				break;
+			}
 			MapObj.FileToMap(name);
 			MapObj.LoadMap();
 
@@ -125,15 +316,16 @@ void CGame::StartGame(int level,int num) {
 // 	MapObj.PrintChar(30, 10, "第一关");
 // 	Sleep(2000);
 // 	system("cls");
+	
 	if (num == 1) {
 		vecTankObj[0].DrawTank();
 		vecTankObj[2].DrawTank();
 		vecTankObj[3].DrawTank();
 		vecTankObj[4].DrawTank();
 		vecTankObj[5].DrawTank();
-
+		
 		while (true) {
-		//	if(vecTankObj[0].getScore() == 50)
+		
 			if (clock() - tank_start[0] > vecTankObj[0].Speed) {
 				MoveSelf();
 				tank_start[0] = clock();
@@ -143,6 +335,10 @@ void CGame::StartGame(int level,int num) {
 					MoveNPC(i);
 					tank_start[i] = clock();
 				}
+			if (vecTankObj[0].getScore() == 50) {
+				vecTankObj[0].Score = 0;
+				return;
+			}
 		}
 
 	}
@@ -170,6 +366,11 @@ void CGame::StartGame(int level,int num) {
 					MoveNPC(i);
 					tank_start[i] = clock();
 				}
+			if (vecTankObj[0].getScore()+ vecTankObj[1].getScore() == 100) {
+				vecTankObj[0].Score = 0;
+				vecTankObj[1].Score = 0;
+				return;
+			}
 		}
 
 	}
@@ -395,9 +596,9 @@ int CGame::BulletCollsion(CBullet& bullet) {
 		
 		if (vecTankObj[3].Blood == 0) {
 			if (bullet.getType() == MyTank_1Bullet)
-				vecTankObj[0].setScore(10);
+				vecTankObj[0].setScore(20);
 			else if (bullet.getType() == MyTank_2Bullet)
-				vecTankObj[1].setScore(10);
+				vecTankObj[1].setScore(20);
 			vecTankObj[3].IsDead = true;
 			vecTankObj[3].ClsObject();
 		}
@@ -411,9 +612,9 @@ int CGame::BulletCollsion(CBullet& bullet) {
 			vecTankObj[4].Blood--;
 		if (vecTankObj[4].Blood == 0) {
 			if (bullet.getType() == MyTank_1Bullet)
-				vecTankObj[0].setScore(10);
+				vecTankObj[0].setScore(30);
 			else if (bullet.getType() == MyTank_2Bullet)
-				vecTankObj[1].setScore(10);
+				vecTankObj[1].setScore(30);
 			vecTankObj[4].IsDead = true;
 			vecTankObj[4].ClsObject();
 		}
@@ -427,9 +628,9 @@ int CGame::BulletCollsion(CBullet& bullet) {
 			vecTankObj[5].Blood--;
 		if (vecTankObj[5].Blood == 0) {
 			if (bullet.getType() == MyTank_1Bullet)
-				vecTankObj[0].setScore(10);
+				vecTankObj[0].setScore(40);
 			else if (bullet.getType() == MyTank_2Bullet)
-				vecTankObj[1].setScore(10);
+				vecTankObj[1].setScore(40);
 			vecTankObj[5].IsDead = true;
 			vecTankObj[5].ClsObject();
 		}
@@ -517,4 +718,44 @@ int CGame::BulletToTank(CBullet bullet) {
 		break;
 	}
 
+}
+
+void CGame::Save(char name[], vector<CTank> &vectank, vector<CBullet> vecbullet,
+	char mapname[], char num, char level) {
+	FILE *file = NULL;
+	char TankFilePath[20] = "./data/";
+	char OtherFilePath[20] = "./data/";
+	char BulletFilePath[20] = "./data/";
+	strcat(TankFilePath, name);
+	strcat(TankFilePath, ".tank");
+	strcat(OtherFilePath, name);
+	strcat(OtherFilePath, ".bullet");
+	strcat(OtherFilePath, name);
+	strcat(OtherFilePath, ".other");
+	if ((file = fopen(TankFilePath, "wb+")) == NULL) {
+		cout << "open file fail" << endl;
+		exit(0);
+	}
+	// fwrite(&snake, sizeof(Snake), 1, file);
+	int Tanksize = vectank.size();
+	fwrite(&vectank[0], sizeof(CTank), Tanksize, file);
+	fclose(file);
+
+	if ((file = fopen(BulletFilePath, "wb+")) == NULL) {
+		cout << "open file fail" << endl;
+		exit(0);
+	}
+	// fwrite(&snake, sizeof(Snake), 1, file);
+	int Bulletsize = vecbullet.size();
+	fwrite(&vecbullet[0], sizeof(CTank), Bulletsize, file);
+	fclose(file);
+
+	if ((file = fopen(OtherFilePath, "wb+")) == NULL) {
+		cout << "open file fail" << endl;
+		exit(0);
+	}
+	fputs(mapname, file);
+	fputc(num, file);
+	fputc(level, file);
+	fclose(file);
 }

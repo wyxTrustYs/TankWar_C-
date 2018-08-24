@@ -16,6 +16,10 @@ public:
 	void MoveNPC(int i);
 	int BulletCollsion(CBullet& bullet);
 	int BulletToTank(CBullet bullet);
+	void Save(char name[], vector<CTank> &vectank,vector<CBullet> vecbullet,
+		char mapname[], char num, char level);
+
+
 private:
 	CMap MapObj;
 	vector<CTank> vecTankObj;
