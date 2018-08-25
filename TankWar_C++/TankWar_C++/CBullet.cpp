@@ -3,7 +3,7 @@
 
 void CBullet::InitBullet(CTank tank) {
 	this->Alliance = tank.getAlliance();
-	this->Speed = 50;
+	this->Speed = 30;
 	switch (tank.getType())
 	{
 	case MyTank_1:

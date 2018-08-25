@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <time.h>
 #include <iostream>
+#pragma comment(lib,"winmm.lib")
 using namespace std;
 
 void CGame::Welcome() {
@@ -11,7 +12,7 @@ void CGame::Welcome() {
 	int num;
 	int level = 1;
 	MapObj.FullScreen();
-	//PlaySoundA("Base.wav", NULL, SND_ASYNC | SND_NODEFAULT | SND_LOOP);
+	
 	while (true) {
 		system("cls");
 		MapObj.PrintChar(35, 5, "坦克大战游戏");
@@ -459,11 +460,12 @@ void CGame::InitTankInfo() {
 }
 void CGame::StartGame(int level, int num,char name[]) {
 	vector<clock_t> tank_start(6, clock());
+	vector<clock_t> bullet_start(6, clock());
 	//	int preScore = vecTankObj[0].getScore();
 	// 	MapObj.PrintChar(30, 10, "第一关");
 	// 	Sleep(2000);
 	// 	system("cls");
-
+	PlaySoundA("BattleCity.wav", NULL, SND_ASYNC | SND_NODEFAULT );
 	if (num == 1) {
 		vecTankObj[0].DrawTank();
 		vecTankObj[2].DrawTank();
@@ -483,12 +485,29 @@ void CGame::StartGame(int level, int num,char name[]) {
 				MoveSelf();
 				tank_start[0] = clock();
 			}
-			for (int i = 2; i <= 5; i++)
+			for (int i = 2; i <= 5; i++) {
 				if (clock() - tank_start[i] > vecTankObj[i].Speed) {
 					MoveNPC(i);
 					tank_start[i] = clock();
 				}
-			if (vecTankObj[0].getScore() == 50) {
+				if (clock() - bullet_start[i] > vecBullet[i].Speed) {
+					if (vecTankObj[i].getIsFire() && vecBullet[i].IsExist()) {
+						//     	if (clock() - bullet_start[i] > vecBullet[i].Speed) {
+						//    			vecBullet[i].Move();
+						//     		bullet_start[i] = clock();
+						//     	}
+						int CollsionType = BulletCollsion(vecBullet[i]);
+						if (CollsionType >= MyTank_1) {
+							if (CollsionType != River)
+								break;
+						}
+						vecBullet[i].Move();
+						bullet_start[i] = clock();
+						//vecBullet[i].Move();
+					}
+				}
+			}
+			if (vecTankObj[0].getScore() >= 50) {
 				vecTankObj[0].Score = 0;
 				return;
 			}
@@ -518,12 +537,25 @@ void CGame::StartGame(int level, int num,char name[]) {
 				MoveAlly();
 				tank_start[1] = clock();
 			}
-			for (int i = 2; i <= 5; i++)
-
+			for (int i = 2; i <= 5; i++) {
 				if (clock() - tank_start[i] > vecTankObj[i].Speed) {
 					MoveNPC(i);
 					tank_start[i] = clock();
 				}
+				if (clock() - bullet_start[i] > vecBullet[i].Speed) {
+					if (vecTankObj[i].getIsFire() && vecBullet[i].IsExist()) {
+						int CollsionType = BulletCollsion(vecBullet[i]);
+						if (CollsionType >= MyTank_1) {
+							if (CollsionType != River)
+								break;
+						}
+						vecBullet[i].Move();
+						bullet_start[i] = clock();
+						
+					}
+				}
+			}
+
 			if (vecTankObj[0].getScore() + vecTankObj[1].getScore() == 100) {
 				vecTankObj[0].Score = 0;
 				vecTankObj[1].Score = 0;
@@ -558,6 +590,7 @@ void CGame::MoveSelf() {
 		}
 
 		if ((GetKeyState(VK_SPACE) < 0) && vecBullet[0].IsExist() == false) {
+			PlaySoundA("bang.wav", NULL, SND_ASYNC | SND_NODEFAULT );
 			vecTankObj[0].setIsFire(true);
 			vecBullet[0].Fire(vecTankObj[0]);
 		}
@@ -571,7 +604,10 @@ void CGame::MoveSelf() {
 		int CollsionType = BulletCollsion(vecBullet[0]);
 		if (CollsionType >= MyTank_1) {
 			if (CollsionType != River)
+			{
+				PlaySoundA("Gunfire.wav", NULL, SND_ASYNC | SND_NODEFAULT);
 				return;
+			}
 		}
 		vecBullet[0].Move();
 	}
@@ -602,6 +638,7 @@ void CGame::MoveAlly() {
 		}
 
 		if ((GetKeyState('L') < 0) && vecBullet[1].IsExist() == false) {
+			PlaySoundA("bang.wav", NULL, SND_ASYNC | SND_NODEFAULT );
 			vecTankObj[1].setIsFire(true);
 			vecBullet[1].Fire(vecTankObj[1]);
 		}
@@ -615,14 +652,17 @@ void CGame::MoveAlly() {
 		int CollsionType = BulletCollsion(vecBullet[1]);
 		if (CollsionType >= MyTank_1) {
 			if (CollsionType != River)
+			{
+				PlaySoundA("Gunfire.wav", NULL, SND_ASYNC | SND_NODEFAULT);
 				return;
+			}
 		}
 		vecBullet[1].Move();
 	}
 }
 
 void CGame::MoveNPC(int i) {
-
+	//vector<clock_t> bullet_start(6, clock());
 	if (vecTankObj[i].IsDead == false) {
 		if (vecTankObj[i].PreType[2][0] == IceGround &&
 			vecTankObj[i].PreType[2][1] == IceGround &&
@@ -647,23 +687,27 @@ void CGame::MoveNPC(int i) {
 			else if (vecTankObj[i].dir == 3)vecTankObj[i].Move(RIGHT);
 		}
 		if (vecBullet[i].IsExist() == false) {
-			//vecTankObj[i].setIsFire(true);
-			//vecBullet[i].Fire(vecTankObj[i]);
+// 			vecTankObj[i].setIsFire(true);
+// 			vecBullet[i].Fire(vecTankObj[i]);
 		}
 
 	}
 	else if (vecTankObj[i].IsDead == true) {
-		vecTankObj[i].InitTank(vecTankObj[i].getType());
-		vecTankObj[i].DrawTank();
+ 		vecTankObj[i].InitTank(vecTankObj[i].getType());
+ 		vecTankObj[i].DrawTank();
 	}
-	if (vecTankObj[i].getIsFire() && vecBullet[i].IsExist()) {
-		int CollsionType = BulletCollsion(vecBullet[i]);
-		if (CollsionType >= MyTank_1) {
-			if (CollsionType != River)
-				return;
-		}
-		vecBullet[i].Move();
-	}
+// 	if (vecTankObj[i].getIsFire() && vecBullet[i].IsExist()) {
+// //     	if (clock() - bullet_start[i] > vecBullet[i].Speed) {
+// //    			vecBullet[i].Move();
+// //     		bullet_start[i] = clock();
+// //     	}
+// 		int CollsionType = BulletCollsion(vecBullet[i]);
+// 		if (CollsionType >= MyTank_1) {
+// 			if (CollsionType != River)
+// 				return;
+// 		}
+// 		//vecBullet[i].Move();
+// 	}
 }
 
 int CGame::BulletCollsion(CBullet& bullet) {
